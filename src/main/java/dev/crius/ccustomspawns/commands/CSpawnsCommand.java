@@ -46,9 +46,7 @@ public class CSpawnsCommand implements TabExecutor {
         }
 
         if (args.length == 0) {
-            player.sendMessage(ChatColor.RED + "Usage: /cspawns create <name>");
-            player.sendMessage(ChatColor.RED + "Usage: /cspawns edit <name>");
-            player.sendMessage(ChatColor.RED + "Usage: /cspawns reload");
+            sendHelp(player);
             return true;
         }
 
@@ -79,7 +77,7 @@ public class CSpawnsCommand implements TabExecutor {
                         .clickEvent(ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, "/cspawns edit " + name));
                 plugin.adventure().player(player).sendMessage(component);
 
-                break;
+                return true;
             }
 
             case "edit": {
@@ -100,6 +98,7 @@ public class CSpawnsCommand implements TabExecutor {
                 plugin.adventure().player(player).playSound(
                         Sound.sound(Key.key("block.note_block.pling"), Sound.Source.BLOCK, 1, 1)
                 );
+                return true;
             }
 
             case "reload": {
@@ -109,11 +108,16 @@ public class CSpawnsCommand implements TabExecutor {
                 plugin.getInputCache().asMap().clear();
 
                 player.sendMessage(ChatColor.GREEN + "Plugin reloaded successfully!");
+                return true;
+            }
+
+            default: {
+                sendHelp(player);
+                return true;
             }
 
         }
 
-        return true;
     }
 
     @Nullable
@@ -129,4 +133,11 @@ public class CSpawnsCommand implements TabExecutor {
 
         return Collections.emptyList();
     }
+
+    private void sendHelp(Player player) {
+        player.sendMessage(ChatColor.RED + "Usage: /cspawns create <name>");
+        player.sendMessage(ChatColor.RED + "Usage: /cspawns edit <name>");
+        player.sendMessage(ChatColor.RED + "Usage: /cspawns reload");
+    }
+
 }
