@@ -1,0 +1,51 @@
+Spawns:
+  parkour:
+    # we support multiple (sub)domains!
+    # always in lowercase.
+    ips:
+      - "parkour.yourdomain.com"
+      - "parkour.crius.dev"
+      - "p.crius.dev"
+
+    # we support multiple locations!
+    # the plugin will choose a random location if there is more than one
+    locations:
+      noob:
+        location: "world,0.0,0.0,0.0,0.0,0.0"
+
+        # available action types: console, message, message-legacy, command, console, title, subtitle
+        # command will run the command as the player.
+        actions:
+          # we use MiniMessage to parse messages.
+          # to use legacy color codes, use [message-legacy] instead
+          - "[message] <aqua>You have been teleported to the parkour <yellow><bold>N</bold>oob!"
+          - "[title] <gold><bold>PARKOUR"
+          - "[subtitle] <gray>You are currently in the parkour <red><bold>N</bold>oob<gray>!"
+          - "[console] givekit {player} noob"
+      pro:
+        location: "world,30.0,0.0,30.0,0.0,0.0"
+        actions:
+          - "[message] <aqua>You have been teleported to the parkour <yellow><bold>P</bold>ro!"
+          - "[title] <gold><bold>PARKOUR"
+          - "[subtitle] <gray>You are currently in the parkour <red><bold>P</bold>ro<gray>!"
+          - "[console] givekit {player} pro"
+
+  admin:
+    ips:
+      - "admin.crius.dev"
+
+    permission: "admin.crius"
+
+    locations:
+      location-1:
+        location: "world,0.0,0.0,0.0,0.0,0.0"
+
+  default:
+    # since ips list is empty (you can just delete it tho),
+    # this location will be used if player did not use
+    # any of the custom ips.
+    ips: []
+
+    locations:
+      location-1:
+        location: "world,0.0,0.0,0.0,0.0,0.0"

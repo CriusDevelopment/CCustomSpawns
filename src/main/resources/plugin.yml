@@ -1,0 +1,15 @@
+name: CCustomSpawns
+version: ${project.version}
+main: dev.crius.ccustomspawns.CCustomSpawnsPlugin
+api-version: 1.13
+authors: [ CriusTeam, hyperion ]
+description: A spawn plugin with IP support.
+website: https://crius.dev
+commands:
+  cspawns:
+    aliases:
+      - spawns
+      - customspawns
+      - ccustomspawns
+      - criusspawns
+      - cspawn

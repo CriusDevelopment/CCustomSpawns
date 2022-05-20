@@ -1,0 +1,5 @@
+# in ticks. Usually 20 ticks = 1 second.
+teleport-delay: 3
+
+# not recommended to enable. only enable if the dev told you to
+debug-mode: false
