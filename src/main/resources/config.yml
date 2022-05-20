@@ -3,3 +3,6 @@ teleport-delay: 3
 
 # not recommended to enable. only enable if the dev told you to
 debug-mode: false
+
+# Access denied message. Required permission for all subcommands: customspawns.admin
+no-permission: "<red><bold>You can not perform this command!"

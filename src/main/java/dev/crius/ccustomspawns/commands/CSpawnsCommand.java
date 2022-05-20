@@ -8,6 +8,7 @@ import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -37,9 +38,17 @@ public class CSpawnsCommand implements TabExecutor {
 
         Player player = (Player) sender;
 
+        if (!player.hasPermission("customspawns.admin")) {
+            plugin.adventure().player(player).sendMessage(
+                    MiniMessage.miniMessage().deserialize(plugin.getConfig().getString("no-permission"))
+            );
+            return true;
+        }
+
         if (args.length == 0) {
             player.sendMessage(ChatColor.RED + "Usage: /cspawns create <name>");
             player.sendMessage(ChatColor.RED + "Usage: /cspawns edit <name>");
+            player.sendMessage(ChatColor.RED + "Usage: /cspawns reload");
             return true;
         }
 
@@ -93,6 +102,15 @@ public class CSpawnsCommand implements TabExecutor {
                 );
             }
 
+            case "reload": {
+                plugin.getData().reload();
+                plugin.getConfig().reload();
+                plugin.getSpawnManager().load();
+                plugin.getInputCache().asMap().clear();
+
+                player.sendMessage(ChatColor.GREEN + "Plugin reloaded successfully!");
+            }
+
         }
 
         return true;
@@ -102,7 +120,7 @@ public class CSpawnsCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (args.length == 1) {
-            return Stream.of("create", "edit").filter(s->s.toLowerCase(Locale.ENGLISH)
+            return Stream.of("create", "edit", "reload").filter(s->s.toLowerCase(Locale.ENGLISH)
                     .startsWith(args[0].toLowerCase(Locale.ENGLISH))).collect(Collectors.toList());
         } else if (args.length == 2) {
             return plugin.getSpawnManager().getSpawns().stream().map(Spawn::getName)
