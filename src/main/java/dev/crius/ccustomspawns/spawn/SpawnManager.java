@@ -69,6 +69,10 @@ public class SpawnManager {
         this.spawnMap.put(key, spawn);
     }
 
+    public void deleteSpawn(String key) {
+        this.spawnMap.remove(key);
+    }
+
     public Collection<Spawn> getSpawns() {
         return this.spawnMap.values();
     }

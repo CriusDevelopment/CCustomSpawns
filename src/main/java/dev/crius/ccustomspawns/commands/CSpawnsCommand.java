@@ -101,6 +101,26 @@ public class CSpawnsCommand implements TabExecutor {
                 return true;
             }
 
+            case "delete": {
+                if (args.length != 2) {
+                    player.sendMessage(ChatColor.RED + "Usage: /cspawns delete <name>");
+                    return true;
+                }
+
+                String name = args[1].toLowerCase(Locale.ENGLISH);
+                if (!plugin.getSpawnManager().getSpawnByName(name).isPresent()) {
+                    player.sendMessage(ChatColor.RED + name + " does not exists!");
+                    return true;
+                }
+
+                plugin.getData().set("Spawns." + name, null);
+                plugin.getData().save();
+                plugin.getSpawnManager().deleteSpawn(name);
+
+                player.sendMessage(ChatColor.GREEN + "Successfully deleted the spawn " + name);
+                return true;
+            }
+
             case "reload": {
                 plugin.getData().reload();
                 plugin.getConfig().reload();
