@@ -23,14 +23,13 @@ public class ChatInputListener implements Listener {
         Consumer<String> consumer = plugin.getInputCache().getIfPresent(player.getUniqueId());
         if (consumer == null) return;
 
-        if (event.getMessage().equalsIgnoreCase("cancel")) {
-            event.setCancelled(true);
-            player.sendMessage(ChatColor.GREEN + "We are no longer waiting for an input.");
-            return;
+        event.setCancelled(true);
+        player.sendMessage(ChatColor.GREEN + "We are no longer waiting for an input.");
+
+        if (!event.getMessage().equalsIgnoreCase("cancel")) {
+            consumer.accept(event.getMessage());
         }
 
-        consumer.accept(event.getMessage());
-        event.setCancelled(true);
         plugin.getInputCache().invalidate(player.getUniqueId());
     }
 
