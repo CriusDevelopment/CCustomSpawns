@@ -1,4 +1,4 @@
-package dev.crius.ccustomspawns.commands;
+package dev.crius.ccustomspawns.command;
 
 import dev.crius.ccustomspawns.CCustomSpawnsPlugin;
 import dev.crius.ccustomspawns.gui.EditGui;

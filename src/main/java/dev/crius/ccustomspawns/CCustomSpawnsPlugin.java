@@ -3,7 +3,7 @@ package dev.crius.ccustomspawns;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import dev.crius.ccustomspawns.action.ActionManager;
-import dev.crius.ccustomspawns.commands.CSpawnsCommand;
+import dev.crius.ccustomspawns.command.CSpawnsCommand;
 import dev.crius.ccustomspawns.configuration.Configuration;
 import dev.crius.ccustomspawns.gui.EditGui;
 import dev.crius.ccustomspawns.gui.EditSLocationGui;
