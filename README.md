@@ -1,4 +1,4 @@
 # CCustomSpawns
-A custom spawn plugin with IP/Subdomain support. **W.I.P**. Not guaranteed to work **for now**.
-
-Still needs to be tested with a (sub)domain on a real machine instead of a local machine lol.
+A custom spawn plugin with IP/Subdomain support.
+<br>
+Wiki can be found in [here](https://github.com/CriusDevelopment/CCustomSpawns/wiki)
