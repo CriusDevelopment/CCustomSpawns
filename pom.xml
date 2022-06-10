@@ -6,7 +6,7 @@
 
     <groupId>dev.crius</groupId>
     <artifactId>CCustomSpawns</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>CCustomSpawns</name>
@@ -102,7 +102,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.1-R0.1-SNAPSHOT</version>
+            <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -134,6 +134,5 @@
             <artifactId>triumph-gui</artifactId>
             <version>3.1.2</version>
         </dependency>
-
     </dependencies>
 </project>
