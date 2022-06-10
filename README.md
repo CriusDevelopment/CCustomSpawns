@@ -5,6 +5,8 @@ Wiki can be found in [here](https://github.com/CriusDevelopment/CCustomSpawns/wi
 <br>
 Latest release can be found in [here](https://github.com/CriusDevelopment/CCustomSpawns/releases/latest)
 <br>
+Spigot: https://www.spigotmc.org/resources/102464/
+<br>
 
 List of libraries used to make this plugin:
 - [TriumphGui](https://github.com/TriumphTeam/triumph-gui)
