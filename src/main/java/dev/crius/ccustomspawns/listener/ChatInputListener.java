@@ -1,6 +1,7 @@
 package dev.crius.ccustomspawns.listener;
 
 import dev.crius.ccustomspawns.CCustomSpawnsPlugin;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,7 +28,7 @@ public class ChatInputListener implements Listener {
         player.sendMessage(ChatColor.GREEN + "We are no longer waiting for an input.");
 
         if (!event.getMessage().equalsIgnoreCase("cancel")) {
-            consumer.accept(event.getMessage());
+            Bukkit.getScheduler().runTask(plugin, () -> consumer.accept(event.getMessage()));
         }
 
         plugin.getInputCache().invalidate(player.getUniqueId());

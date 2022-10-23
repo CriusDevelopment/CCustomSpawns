@@ -10,6 +10,7 @@ import dev.triumphteam.gui.guis.Gui;
 import dev.triumphteam.gui.guis.GuiItem;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -26,6 +27,11 @@ public class EditSLocationGui {
     }
 
     public static void open(Player player, Spawn spawn) {
+        if (!Bukkit.isPrimaryThread()) {
+            Bukkit.getScheduler().runTask(plugin, () -> open(player, spawn));
+            return;
+        }
+
         Component component = Component.text("Editing Locations of " + spawn.getName())
                 .decoration(TextDecoration.UNDERLINED, true);
         Gui gui = Gui.gui().rows(3).disableAllInteractions().title(component).create();
